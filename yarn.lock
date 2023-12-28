@@ -4198,9 +4198,9 @@ nuxi@^3.10.0:
   optionalDependencies:
     fsevents "~2.3.3"
 
-nuxt@^3.9.0:
+nuxt@^3.0.0:
   version "3.9.0"
-  resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.9.0.tgz"
+  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.9.0.tgz#a63e9a0a8d70d2233edd0f8ad87d13ed16ad84b7"
   integrity sha512-PiUQwJRBlclRrotcQAK95ueeRSiFhZmwNBj9MtIdWF4XK97OjNszUmNjKphqB7BsVcm089l0jZm1N0sYr7tMOg==
   dependencies:
     "@nuxt/devalue" "^2.0.2"
