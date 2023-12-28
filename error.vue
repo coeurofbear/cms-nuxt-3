@@ -1,8 +1,9 @@
 <template>
-  <Header/>
-  <Teaser :blok="{headline: error.message}"/>
+  <NuxtLayout>
+    <Teaser :blok="{ headline: error.message }" />
+  </NuxtLayout>
 </template>
 
 <script setup>
-const error = useError();
+const error = useError()
 </script>
