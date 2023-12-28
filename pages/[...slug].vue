@@ -1,11 +1,14 @@
 <script setup>
-const { slug } = useRoute().params;
-const { locale } = useI18n();
+const { slug } = useRoute().params
+
+const { locale } = useI18n()
 const resolveRelations = ['popular-articles.articles']
+
 const story = await useAsyncStoryblok(
   slug && slug.length > 0 ? slug.join('/') : 'home',
   {
     version: 'draft',
+    language: locale.value,
     resolve_relations: resolveRelations,
   },
   {
@@ -16,8 +19,8 @@ const story = await useAsyncStoryblok(
     statusCode: 404,
     statusMessage: 'Page Not Found',
     fatal: true,
-  });
-});
+  })
+})
 </script>
  
 <template>
