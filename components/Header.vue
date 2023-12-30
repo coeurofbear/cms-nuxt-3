@@ -7,6 +7,9 @@
       <nav>
         <ul class="flex space-x-8 text-lg font-bold">
           <li>
+            <NuxtLink :to="localePath('/pages')" class="hover:text-[#50b0ae]">Pages</NuxtLink>
+          </li>
+          <li>
             <NuxtLink :to="localePath('/blog')" class="hover:text-[#50b0ae]">Blog</NuxtLink>
           </li>
           <li>

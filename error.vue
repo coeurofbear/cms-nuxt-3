@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <Teaser :blok="{ headline: error.message }" />
+    <Teaser :blok="{ headline: error && error.message }" />
   </NuxtLayout>
 </template>
 
