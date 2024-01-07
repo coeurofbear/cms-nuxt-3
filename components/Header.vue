@@ -4,16 +4,12 @@
       <NuxtLink :to="localePath('/')">
         <h1 class="text-[#50b0ae] text-3xl font-bold">Storyblok Nuxt</h1>
       </NuxtLink>
-      <nav>
+      <nav v-if="headerMenu">
         <ul class="flex space-x-8 text-lg font-bold">
-          <li>
-            <NuxtLink :to="localePath('/pages')" class="hover:text-[#50b0ae]">Pages</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink :to="localePath('/blog')" class="hover:text-[#50b0ae]">Blog</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink :to="localePath('/about')" class="hover:text-[#50b0ae]">About</NuxtLink>
+          <li v-for="blok in headerMenu" :key="blok._uid">
+            <NuxtLink :to="blok.link.story ? localePath(`/${blok.link.cached_url}`) : blok.link.cached_url" class="hover:text-[#50b0ae]">
+              {{ blok.link.story ? blok.link.story.name : blok.name }}
+            </NuxtLink>
           </li>
           <li v-for="lang in availableLocales" :key="lang">
             <NuxtLink :to="switchLocalePath(lang)" class="uppercase">
@@ -27,9 +23,18 @@
 </template>
  
 <script setup>
+const storyblokApi = useStoryblokApi()
 const localePath = useLocalePath()
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+
+const { data } = await storyblokApi.get('cdn/stories/config', {
+  version: 'draft',
+  resolve_links: 'url',
+})
+ 
+const headerMenu = ref(null)
+headerMenu.value = data.story.content.header_menu
 
 const availableLocales = computed(() => {
   return (locales.value).filter(i => i.code !== locale.value)
